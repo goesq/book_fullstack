@@ -1,0 +1,50 @@
+<!-- redefinir-senha.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lacquer&display=swap" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+    <title>Redefinir Senha | bookcase.com</title>
+</head>
+<body>
+    <header>
+        <div class="titlebook2">
+            <a href="../html/index.html" class="home-link">
+                <h1>bookcase.com</h1>
+            </a>
+        </div>
+        <h1 class="titlelogin">REDEFINIR SENHA</h1>
+    </header>
+
+    <main>  
+        <div class="login-container">
+            <!-- Formulário para redefinir a senha -->
+            <form action="../html/forgetpassword.html" method="post" class="login-form">
+                <h2 class="form-title">Defina sua nova senha</h2>
+                <div class="form-group">
+                    <label for="temp-password">Senha Temporária</label>
+                    <input type="password" id="temp-password" name="temp-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="new-password">Nova senha</label>
+                    <input type="password" id="new-password" name="new-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirme a nova senha</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                </div>
+                <button type="submit" class="login-btn">Redefinir Senha</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            Todos os direitos reservados © | bookcase.com - 2024
+        </div>
+    </footer>
+</body>
+</html>

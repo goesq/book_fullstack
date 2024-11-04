@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lacquer&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+
+/* Estilos gerais */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo do header */
+header {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 1rem;
+    text-align: center;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.highlight-title {
+    text-align: center;
+    font-family: "Dela Gothic One", sans-serif;
+    font-size: 3.5em;
+    color: #1068c7;
+    margin-top: 60px;
+    border-color: black;
+    /* Note que border-color não afeta o estilo de texto diretamente */
+}
+
+.titlebook h1 {
+    margin: 0;
+}
+
+/* Estilo do título de destaque */
+.highlight-title {
+    font-family: 'Dela Gothic One', sans-serif;
+    font-size: 3.5em;
+    color: #1068c7;
+    margin-top: 20px;
+}
+
+/* Container do livro */
+.book-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+}
+
+/* Estilo da imagem e detalhes do livro */
+.book-info {
+    display: flex;
+    align-items: flex-start;
+}
+
+.book-image {
+    max-width: 250px;
+    /* Aumente o tamanho da imagem */
+    height: auto;
+    margin-right: 20px;
+}
+
+.book-details {
+    max-width: 600px;
+}
+
+.book-details h2 {
+    margin: 0;
+    font-size: 2em;
+}
+
+.book-details p {
+    margin: 10px 0;
+}
+
+/* Estilo do botão */
+.reserve-btn {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #1068c7;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid #094d96;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.reserve-btn:hover {
+    background-color: #094d96;
+    transform: scale(1.1);
+}
+
+/* Estilo do footer */
+footer {
+    background-color: #f1f1f1;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* Estilo da avaliação em estrelas */
+.rating {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.star {
+    font-size: 1.5rem;
+    /* Tamanho das estrelas */
+    color: #f1c40f;
+    /* Cor das estrelas */
+    margin-right: 5px;
+}
+
+.titlebook,
+.titlebook2 {
+    display: flex;
+    align-items: center;
+    margin-left: 63px;
+}
+
+.home-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    /* Mantém a cor padrão do texto */
+}
+
+.home-link i {
+    font-size: 2rem;
+    /* Ajuste o tamanho do ícone conforme necessário */
+    margin-right: 10px;
+    /* Espaço entre o ícone e o texto */
+}
+
+.home-link h1 {
+    margin: 0;
+    /* Remove a margem padrão do <h1> */
+    font-size: 2rem;
+    /* Ajuste o tamanho da fonte conforme necessário */
+}

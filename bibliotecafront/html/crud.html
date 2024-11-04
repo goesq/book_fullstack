@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+    <title>Gerenciamento | bookcase.com</title>
+</head>
+
+<body>
+    <header>
+        <div class="titlebook2">
+            <a href="index.html" class="home-link">
+                <h1>bookcase.com</h1>
+            </a>
+        </div>
+        <h1 class="titlelogin">GERENCIAMENTO</h1>
+    </header>
+
+    <main>
+        <div class="crud-container">
+            <h2 class="crud-title">Lista de Livros</h2>
+            <table class="crud-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Ano</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Exemplo de linha -->
+                    <tr>
+                        <td>1</td>
+                        <td>O Alquimista</td>
+                        <td>Paulo Coelho</td>
+                        <td>1988</td>
+                        <td>
+                            <button class="edit-btn">Editar</button>
+                            <button class="delete-btn">Excluir</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="create-btn">Criar Novo Livro</button>
+        </div>
+
+        <!-- Formulário de criação/edição -->
+        <div class="form-container" id="book-form">
+            <form action="#" method="post" class="crud-form">
+                <h2 class="form-title">Adicionar/Editar Livro</h2>
+                <div class="form-group">
+                    <label for="title">Título</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="author">Autor</label>
+                    <input type="text" id="author" name="author" required>
+                </div>
+                <div class="form-group">
+                    <label for="year">Ano de Publicação</label>
+                    <input type="number" id="year" name="year" required>
+                </div>
+                <button type="submit" class="login-btn">Salvar</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            Todos os direitos reservados © | bookcase.com - 2024
+        </div>
+    </footer>
+</body>
+
+</html>

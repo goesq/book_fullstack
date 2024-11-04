@@ -1,0 +1,424 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lacquer&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #fff;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titlebook {
+  display: flex;
+  align-items: center;
+  margin-left: 63px;
+}
+
+.home-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit; /* Mantém a cor padrão do texto */
+}
+
+.home-link i {
+  font-size: 2rem; /* Ajuste o tamanho do ícone conforme necessário */
+  margin-right: 10px; /* Espaço entre o ícone e o texto */
+}
+
+.home-link h1 {
+  margin: 0; /* Remove a margem padrão do <h1> */
+  font-size: 2rem; /* Ajuste o tamanho da fonte conforme necessário */
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  max-width: 1000px;
+  width: 100%;
+  flex: 1;
+  margin-right: 1rem; /* Espaço entre a barra de pesquisa e os botões de autenticação */
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  margin-right: -1px; /* Remove o espaço entre o input e o botão */
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 0.5rem; /* Espaço entre os botões */
+  margin-left: 2rem; /* Aumenta a margem à esquerda para afastar do canto da tela */
+}
+
+/* Estilização dos botões "Log In" e "Sign Up" */
+.login,
+.signup {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid #094d96;
+  border-radius: 4px;
+  background-color: #1068c7;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Animação suave para mudança de cor e tamanho */
+}
+
+/* Efeito de hover para o botão "Log In" */
+.login:hover {
+  background-color: #0e5fb4; /* Cor de fundo ao passar o mouse */
+  transform: scale(1.05); /* Aumenta o tamanho do botão em 5% */
+}
+
+/* Estilização e efeito de hover para o botão "Sign Up" */
+.signup {
+  border-color: #094d96;
+  color: #ffffff;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Animação suave para mudança de cor e tamanho */
+}
+
+.signup:hover {
+  background-color: #0e5fb4; /* Cor de fundo ao passar o mouse */
+  transform: scale(1.05); /* Aumenta o tamanho do botão em 5% */
+}
+
+
+/* Estilização do título "DESTAQUES DO MÊS" */
+.highlight-title {
+  text-align: center;
+  font-family: "Dela Gothic One", sans-serif;
+  font-size: 3.5em;
+  color: #1068c7;
+  margin-top: 60px;
+  border-color: black; /* Note que border-color não afeta o estilo de texto diretamente */
+  transition: transform 0.3s ease; /* Animação suave para inclinação e aumento */
+}
+
+/* Efeito de hover para o título "DESTAQUES DO MÊS" */
+.highlight-title:hover {
+  transform: rotate(-2deg) scale(1.15); /* Inclina o texto para a esquerda em 5 graus e aumenta o tamanho em 10% */
+}
+
+.highlight-title1 {
+  text-align: center;
+  font-family: "Dela Gothic One", sans-serif;
+  font-size: 3.5em;
+  color: #1068c7;
+  margin-top: 60px;
+  border-color: black; /* Note que border-color não afeta o estilo de texto diretamente */
+}
+
+main {
+  padding: 1rem;
+}
+
+.book-highlight {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.book {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 40px;
+  overflow: hidden;
+  width: calc(25% - 1rem); /* Ajusta a largura dos artigos */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza o conteúdo horizontalmente */
+  text-align: center; /* Centraliza o texto */
+}
+
+.book-cover {
+  display: flex; /* Usar flexbox para centralizar o conteúdo */
+  justify-content: center; /* Centraliza horizontalmente a imagem */
+  align-items: center; /* Centraliza verticalmente a imagem */
+  overflow: hidden;
+  background-color: #eaeaea;
+  width: 120px; 
+  height: 180px; 
+  margin-bottom: 1rem; 
+  }
+
+.book-cover img {
+  width: auto; 
+  height: 100%;
+  object-fit: cover; 
+}
+
+.book-cover img {
+  width: auto; 
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.book-details {
+  text-align: center;
+}
+
+.book-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.book-author {
+  color: #555;
+}
+
+.reserve-btn {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border: 1px solid #1068c7;
+  border-radius: 4px;
+  background-color: #0e5fb4;
+  transition: background-color 0.3s ease, transform 0.3s ease; 
+  display: inline-block; 
+}
+
+.reserve-btn:hover {
+  background-color: #094d96; 
+  transform: scale(1.05); 
+}
+
+footer {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  position: relative;
+}
+
+
+
+.titlelogin {
+  text-align: center;
+  font-family: "Dela Gothic One", sans-serif;
+  font-size: 3em;
+  color: #1068c7;
+  margin-top: 60px;
+}
+
+.main {
+  padding: 1rem;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 300px); 
+}
+
+.login-form {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 40px;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.form-title {
+  font-size: 1.5em;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 40px;
+}
+
+.login-btn {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #0056b3;
+}
+
+.titlebook2 {
+  margin-left: 820px;
+  font-size: 1.2em;
+}
+
+.online-catalog {
+  text-align: center; 
+  margin-top: 29px;
+}
+
+.catalog-link {
+  font-family: 'Inter', sans-serif; 
+  font-size: 28px; 
+  color: #333; 
+  text-decoration: none; 
+  font-weight: bold; 
+  display: inline-block; 
+  transition: color 0.3s ease, transform 0.5s ease; 
+}
+
+.catalog-link:hover {
+  color: #0056b3; 
+  transform: scale(1.05); 
+}
+
+#book-content {
+  text-align: center;
+}
+
+#book-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.book {
+  transition: visibility 0.3s, opacity 0.3s;
+}
+
+.book[style*="visibility: hidden"] {
+  opacity: 0;
+  position: absolute;
+}
+.terms-notice {
+    font-size: 0.8em; /* Ajuste o valor conforme necessário */
+    color: #555; /* Ajuste a cor conforme necessário */
+    margin-top: 10px; /* Ajuste a margem conforme necessário */
+}
+
+
+.crud-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.crud-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.crud-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+.crud-table th, .crud-table td {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.crud-table th {
+  background-color: #1068c7;
+  color: #fff;
+  font-weight: bold;
+}
+
+.create-btn, .edit-btn, .delete-btn {
+  background-color: #1068c7;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.create-btn:hover, .edit-btn:hover, .delete-btn:hover {
+  background-color: #094d96;
+}
+
+.form-container {
+  display: none; /* Inicialmente, o formulário não aparece */
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.crud-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.crud-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.crud-form input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
