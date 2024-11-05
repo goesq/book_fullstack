@@ -1,24 +1,24 @@
 {
   "compilerOptions": {
-    "target": "es5", // Define a versão do JavaScript que você deseja compilar
-    "module": "esnext", // Define o sistema de módulos como ESNext
-    "baseUrl": "./", // Define a base para resolução de módulos
-    "moduleResolution": "node", // Utiliza a resolução de módulos do Node.js
+    "target": "es5",
+    "module": "esnext",
+    "baseUrl": "./",
+    "moduleResolution": "node",
     "paths": {
-      "@/*": ["src/*"] // Define um alias para a pasta src
+      "@/*": ["src/*"]
     },
     "lib": [
-      "esnext", // Inclui as definições de tipos para ESNext
-      "dom" // Inclui as definições de tipos para o DOM
+      "esnext",
+      "dom"
     ],
-    "allowJs": true, // Permite que arquivos JavaScript sejam incluídos
-    "checkJs": true // Habilita a verificação de tipo em arquivos JavaScript
+    "allowJs": true,
+    "checkJs": true
   },
   "include": [
-    "src/**/*" // Inclui todos os arquivos dentro da pasta src
+    "src/**/*"
   ],
   "exclude": [
-    "node_modules", // Exclui a pasta node_modules
-    "**/*.spec.js" // Exclui arquivos de teste
+    "node_modules",
+    "**/*.spec.js"
   ]
 }
