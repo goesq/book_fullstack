@@ -1,20 +1,16 @@
 <template>
   <div id="app">
-    <IndexComponent /> <!-- Adicionando o componente IndexComponent aqui -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import IndexComponent from './components/IndexComponent.vue'; // Importando o novo componente
+import { RouterView } from 'vue-router';
 
 export default {
   name: 'App',
   components: {
-    IndexComponent // Registrando o novo componente
+    RouterView
   }
-}
+};
 </script>
-
-<style>
-/* Estilos globais do seu aplicativo */
-</style>

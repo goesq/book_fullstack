@@ -12,7 +12,9 @@
                     <input type="text" id="search-input" class="search-input" placeholder="Buscar...">
                 </form>
                 <div class="auth-buttons">
-                    <a href="../html/login.html" class="login">Log In</a>
+                  <router-link to="/LoginComponent">
+                    Login
+                  </router-link>
                     <a href="../html/cadastro.html" class="signup">Sign Up</a>
                 </div>
             </div>
