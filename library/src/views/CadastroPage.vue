@@ -19,6 +19,9 @@
                     <label for="confirm-password">Confirmar Senha</label>
                     <input type="password" id="confirm-password" name="confirm-password" required>
                 </div>
+                <div class="form-group">
+                    <router-link to="/" class="forgot-password"> Já tem conta? Faça login</router-link>
+                </div>
                 <button type="submit" class="login-btn">Cadastrar</button>
             </form>
         </div>

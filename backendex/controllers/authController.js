@@ -5,11 +5,15 @@ const User = require("../models/user");
    // Função de registro
    exports.register = async (req, res) => {
      try {
-       const { name, email, password } = req.body;
-       const user = new User({ name, email, password });
+       const { name, email, cargo ,password } = req.body;
+       console.log( name, email, cargo ,password );
+       
+       const user = new User({ name, email, cargo, password });
        await user.save();
        res.status(201).json({ message: "Usuário registrado com sucesso!" });
      } catch (error) {
+      console.log(error);
+      
        res.status(500).json({ message: "Erro no registro", error });
      }
    };
