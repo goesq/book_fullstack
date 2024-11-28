@@ -5,7 +5,7 @@
                 <h2 class="form-title">Entre na sua conta</h2>
                 <div class="form-group">
                     <label for="username">Nome de usuário</label>
-                    <input v-model="email" type="text" id="username" name="username" required>
+                    <input v-model="username" type="text" id="username" name="username" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Senha</label>
@@ -28,24 +28,21 @@ export default {
     data() {
         // Instânciando as variabeis para armazenar os dados
         return {
-            email: "",
+            username: "",
             password: ""
         }
     },
     methods: {
         // Função para realizar o login 
-
         async login() {
             // Utilizando o axios para conectar na api
             await axios.post("http://localhost:3000/api/auth/login", {
                 // Enviando os dados do formulário para a api, email e password
-                email: this.email,
+                username: this.username,
                 password: this.password
-            }).then((respo) => {
-                // Se o login obter sucesso, redireciona para a página home
+            }).then(() => {
+                // Se o login obter sucesso, redireciona para a página ho 
                 this.$router.push('/home')
-            }).catch((erro) =>{
-                alert("Erro ao tentar fazer login!")
             })
         }
     }
