@@ -1,4 +1,6 @@
 <template>
+        <h1 class="titlelogin">REGISTRE-SE</h1>
+
     <main>
         <div class="login-container">
             <form action="#" method="" class="login-form">
