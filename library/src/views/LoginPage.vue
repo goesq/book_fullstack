@@ -24,14 +24,7 @@
 import axios from 'axios';
 
 export default {
-    // name:"LoginPage",
-    data() {
-        // Instânciando as variabeis para armazenar os dados
-        return {
-            username: "",
-            password: ""
-        }
-    },
+    // name:"LoginPage",    
     methods: {
         // Função para realizar o login 
         async login() {
@@ -45,6 +38,14 @@ export default {
                 this.$router.push('/home')
             })
         }
+    },
+
+     data() {
+        // Instânciando as variabeis para armazenar os dados
+     return {
+           username: "",
+            password: ""
+        }
     }
-}
+} 
 </script>
