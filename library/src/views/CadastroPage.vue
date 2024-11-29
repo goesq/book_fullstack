@@ -24,7 +24,7 @@
                 <div class="form-group">
                     <router-link to="/" class="forgot-password"> Já tem conta? Faça login</router-link>
                 </div>
-                <button @click="register()" type="submit" class="login-btn">Entrar</button>
+                <button @click="register()" type="submit" class="login-btn">Cadastrar</button>
             </form> 
         </div>
     </main>
