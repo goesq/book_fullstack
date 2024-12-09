@@ -86,20 +86,6 @@ export default {
 </script>
 
 <style>
-.success {
-    color: green;
-    font-weight: bold;
-    margin-top: -10px;
-    text-align: center;
-}
-
-.error {
-    color: red;
-    font-weight: bold;
-    margin-top: -10px;
-    text-align: center;
-}
-
 .input-container {
     display: flex;
     align-items: center;

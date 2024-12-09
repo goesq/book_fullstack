@@ -18,7 +18,7 @@
                         <router-link to="/" class="forgot-password">Já tem conta? Faça login</router-link>
                     </div>
                     <button type="submit" class="login-btn">Cadastrar</button>
-                </form> 
+                </form>
             </div>
 
             <!-- Mensagem de sucesso -->

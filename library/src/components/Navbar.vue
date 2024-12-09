@@ -4,8 +4,6 @@
             <div class="titlebook2">
                 <h1>bookcase.com</h1>
             </div>
-
-            </div>
-
+        </div>
     </header>
 </template>

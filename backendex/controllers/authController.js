@@ -1,37 +1,54 @@
-const jwt = require("jsonwebtoken");
+const User = require("../models/user"); // Ajuste o caminho conforme necessário
 const bcrypt = require("bcryptjs");
-const User = require("../models/user");
-
+const jwt = require("jsonwebtoken"); // Para gerar tokens JWT
 
 // Função para registrar um novo usuário
 exports.register = async (req, res) => {
-  try {
-    const { username, password } = req.body;
-    console.log(username, password);
+    const { username, password, role } = req.body;
 
-    const user = new User({ username, password });
-    await user.save();
-    res.status(201).json({ message: "Usuário cadastrado com sucesso!" });
-  } catch (error) {
-    console.log(error);
+    try {
+        // Verifica se o usuário já existe
+        const existingUser  = await User.findOne({ username });
+        if (existingUser ) {
+            return res.status(400).json({ message: "Usuário já existe." });
+        }
 
-    res.status(500).json({ message: "Falha ao registrar usuário", error });
-  }
+        // Cria um novo usuário
+        const newUser  = new User({
+            username,
+            password, // A senha será criptografada pelo middleware
+            role: role || 'user' // Define o role como 'user' por padrão, se não for fornecido
+        });
+
+        await newUser .save();
+        res.status(201).json({ message: "Usuário registrado com sucesso." });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
 };
 
-// Função de autenticação (login)
+// Função para autenticar um usuário
 exports.login = async (req, res) => {
-  const { username, password } = req.body;
-  const user = await User.findOne({ username });
-  
-  if (!user || !(await bcrypt.compare(password, user.password))) {
-    return res.status(400).json({ message: "Credenciais incorretas" });
-  }
+    const { username, password } = req.body;
 
-  try {
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
-    res.status(200).json({ token });
-  } catch (error) {
-    res.status(500).json({ message: "Erro ao gerar token", error });
-  }
+    try {
+        // Verifica se o usuário existe
+        const user = await User.findOne({ username });
+        if (!user) {
+            return res.status(400).json({ message: "Usuário não encontrado." });
+        }
+
+        // Verifica a senha
+        const isMatch = await user.comparePassword(password);
+        if (!isMatch) {
+            return res.status(400).json({ message: "Senha incorreta." });
+        }
+
+        // Gera um token JWT
+        const token = jwt.sign({ id: user._id, role: user.role }, "seu_segredo", { expiresIn: "1h" }); // Troque "seu_segredo" por uma chave secreta segura
+
+        res.status(200).json({ token });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
 };

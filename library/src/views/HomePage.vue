@@ -1,6 +1,6 @@
 <template>
     <header>
-     <h1 class="highlight-title">ESTANTE<br> ONLINE</h1>
+        <h1 class="highlight-title">ESTANTE<br> ONLINE</h1>
     </header>
 
     <main>

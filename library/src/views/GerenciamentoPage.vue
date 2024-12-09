@@ -1,12 +1,7 @@
 <template>
-<div class="titlelogin">
-  GERENCIAMENTO
-</div>
-<form @submit.prevent="searchBooks" class="centered-search-form">
-  <input type="text" v-model="searchQuery" class="search-input" placeholder="Buscar...">
-  <button type="submit" class="search-button">Buscar</button>
-</form>
-
+  <div class="titlelogin">
+    GERENCIAMENTO
+  </div>
   <main>
     <div class="crud-container">
       <h2 class="crud-title">Lista de Livros</h2>
@@ -27,7 +22,7 @@
             <td>{{ book.year }}</td>
             <td>
               <img v-if="book.image" :src="book.image" alt="Imagem do livro" class="book-image" />
-              <span v-else>Sem imagem</span>  
+              <span v-else>Sem imagem</span>
             </td>
             <td>
               <button @click="editBook(book)">Editar</button>

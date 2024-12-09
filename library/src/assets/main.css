@@ -26,6 +26,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-decoration: none;
 }
 
 .titlebook {
@@ -437,3 +438,4 @@ footer {
   border: 1px solid #ddd;
   border-radius: 4px;
 }
+
