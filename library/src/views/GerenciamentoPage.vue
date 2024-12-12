@@ -1,64 +1,66 @@
 <template>
-  <div class="titlelogin">
-    GERENCIAMENTO
-  </div>
-  <main>
-    <div class="crud-container">
-      <h2 class="crud-title">Lista de Livros</h2>
-      <table class="crud-table">
-        <thead>
-          <tr>
-            <th>Título</th>
-            <th>Autor</th>
-            <th>Ano</th>
-            <th>Imagem</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="book in books" :key="book._id">
-            <td>{{ book.title }}</td>
-            <td>{{ book.author }}</td>
-            <td>{{ book.year }}</td>
-            <td>
-              <img v-if="book.image" :src="book.image" alt="Imagem do livro" class="book-image" />
-              <span v-else>Sem imagem</span>
-            </td>
-            <td>
-              <button @click="editBook(book)">Editar</button>
-              <button @click="deleteBook(book._id)">Excluir</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <button @click="createNewBook">Criar Novo Livro</button>
+  <div> <!-- Elemento raiz adicionado aqui -->
+    <div class="titlelogin">
+      GERENCIAMENTO
     </div>
+    <main>
+      <div class="crud-container">
+        <h2 class="crud-title">Lista de Livros</h2>
+        <table class="crud-table">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Autor</th>
+              <th>Ano</th>
+              <th>Imagem</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="book in books" :key="book._id">
+              <td>{{ book.title }}</td>
+              <td>{{ book.author }}</td>
+              <td>{{ book.year }}</td>
+              <td>
+                <img v-if="book.image" :src="book.image" alt="Imagem do livro" class="book-image" />
+                <span v-else>Sem imagem</span>
+              </td>
+              <td>
+                <button @click="editBook(book)">Editar</button>
+                <button @click="deleteBook(book._id)">Excluir</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button @click="createNewBook">Criar Novo Livro</button>
+      </div>
 
-    <!-- Formulário de criação/edição -->
-    <div class="form-container" v-if="isFormVisible">
-      <form @submit.prevent="saveBook" class="crud-form">
-        <h2 class="form-title">{{ isEditMode ? 'Editar Livro' : 'Adicionar Livro' }}</h2>
-        <div class="form-group">
-          <label for="title">Título</label>
-          <input type="text" v-model="bookForm.title" id="title" name="title" required>
-        </div>
-        <div class="form-group">
-          <label for="author">Autor</label>
-          <input type="text" v-model="bookForm.author" id="author" name="author" required>
-        </div>
-        <div class="form-group">
-          <label for="year">Ano de Publicação</label>
-          <input type="number" v-model="bookForm.year" id="year" name="year" required>
-        </div>
-        <div class="form-group">
-          <label for="image">Imagem (URL)</label>
-          <input type="text" v-model="bookForm.image" id="image" name="image" placeholder="URL da imagem">
-        </div>
-        <button type="submit" class="login-btn">Salvar</button>
-        <button type="button" @click="cancelEdit" class="cancel-btn">Cancelar</button>
-      </form>
-    </div>
-  </main>
+      <!-- Formulário de criação/edição -->
+      <div class="form-container" v-if="isFormVisible">
+        <form @submit.prevent="saveBook" class="crud-form">
+          <h2 class="form-title">{{ isEditMode ? 'Editar Livro' : 'Adicionar Livro' }}</h2>
+          <div class="form-group">
+            <label for="title">Título</label>
+            <input type="text" v-model="bookForm.title" id="title" name="title" required>
+          </div>
+          <div class="form-group">
+            <label for="author">Autor</label>
+            <input type="text" v-model="bookForm.author" id="author" name="author" required>
+          </div>
+          <div class="form-group">
+            <label for="year">Ano de Publicação</label>
+            <input type="number" v-model="bookForm.year" id="year" name="year" required>
+          </div>
+          <div class="form-group">
+            <label for="image">Imagem (URL)</label>
+            <input type="text" v-model="bookForm.image" id="image" name="image" placeholder="URL da imagem">
+          </div>
+          <button type="submit" class="login-btn">Salvar</button>
+          <button type="button" @click="cancelEdit" class="cancel-btn">Cancelar</button>
+        </form>
+      </div>
+    </main>
+  </div> <!-- Fim do elemento raiz -->
 </template>
 
 <script>
@@ -148,5 +150,62 @@ export default {
   max-width: 100px;
   max-height: 100px;
   object-fit: cover;
+}
+
+.crud-container {
+  margin: 20px;
+}
+
+.crud-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.crud-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.crud-table th, .crud-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.form-container {
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-title {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.login-btn, .cancel-btn {
+  padding: 10px 15px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background-color: #f44336; /* Cor vermelha para o botão cancelar */
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #d32f2f; /* Cor mais escura ao passar o mouse */
+}
+
+.login-btn {
+  background-color: #4CAF50; /* Cor verde para o botão salvar */
+  color: white;
+}
+
+.login-btn:hover {
+  background-color: #45a049; /* Cor mais escura ao passar o mouse */
 }
 </style>

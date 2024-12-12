@@ -11,7 +11,7 @@ const store = createStore({
         setUser (state, user) {
             state.user = user;
             state.isAuthenticated = !!user;
-            state.role = user.role; // Armazena o papel do usuário
+            state.role = user ? user.role : null; // Armazena o papel do usuário, ou null se não houver usuário
         },
         clearUser (state) {
             state.user = null;
@@ -21,7 +21,7 @@ const store = createStore({
     },
     actions: {
         logout({ commit }) {
-            commit('clearUser '); // Limpa o usuário do estado
+            commit('clearUser '); // Limpa o usuário do estado (removido espaço extra)
         },
     },
 });

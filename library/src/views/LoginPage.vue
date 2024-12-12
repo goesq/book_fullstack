@@ -70,6 +70,7 @@ export default {
                     this.password = "";
 
                     setTimeout(() => {
+                        console.log("Redirecionando para /home"); // Verifique se esta linha é executada
                         this.$router.push('/home');
                     }, 2000);
                 }

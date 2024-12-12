@@ -1,33 +1,37 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '../views/HomePage.vue';
+import LoginPage from '../views/LoginPage.vue';
+import CadastroPage from '../views/CadastroPage.vue';
+import GerenciamentoPage from '../views/GerenciamentoPage.vue';
 import store from '../store'; // Importa o store do Vuex
 
+const routes = [
+  {
+    path: '/',
+    name: 'login',
+    component: LoginPage, // Carrega o LoginPage diretamente
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: HomePage,
+  },
+  {
+    path: '/cadastro',
+    name: 'cadastro',
+    component: CadastroPage,
+  },
+  {
+    path: '/gerenciamento',
+    name: 'gerenciamento',
+    component: GerenciamentoPage,
+    meta: { requiresAuth: true }, // Protege a rota de gerenciamento
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/home',
-      name: 'home',
-      component: HomePage,
-    },
-    {
-      path: '/',
-      name: 'login',
-      component: () => import('../views/LoginPage.vue'),
-    },
-    {
-      path: '/cadastro',
-      name: 'cadastro',
-      component: () => import('../views/CadastroPage.vue'),
-    },
-    {
-      path: '/gerenciamento',
-      name: 'gerenciamento',
-      component: () => import('../views/GerenciamentoPage.vue'),
-      meta: { requiresAuth: true }, // Protege a rota de gerenciamento
-    },
-  ],
+  routes,
 });
 
 // Middleware para verificar autenticação

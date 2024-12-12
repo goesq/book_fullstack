@@ -11,7 +11,7 @@ export default {
     methods: {
         async login() {
             try {
-                const response = await api.post('http://localhost:5000/api/auth/login', { // Ajuste a URL conforme necessário
+                const response = await api.post('http://localhost:3000/api/auth/login', { // Ajuste a URL conforme necessário
                     username: this.username,
                     password: this.password,
                 });
@@ -19,7 +19,7 @@ export default {
                 // Verifica se a resposta contém sucesso e token
                 if (response.data && response.data.success) {
                     localStorage.setItem('token', response.data.token); // Salvar o token no localStorage
-                    this.$router.push('/ativos'); // Redireciona para a página "ativos" (ajuste a rota se necessário)
+                    this.$router.push('/home'); // Redireciona para a página "ativos" (ajuste a rota se necessário)
                 } else {
                     this.errorMessage = 'Login falhou. Verifique suas credenciais.';
                 }

@@ -45,9 +45,10 @@ exports.login = async (req, res) => {
         }
 
         // Gera um token JWT
-        const token = jwt.sign({ id: user._id, role: user.role }, "seu_segredo", { expiresIn: "1h" }); // Troque "seu_segredo" por uma chave secreta segura
+        const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET || "seu_segredo", { expiresIn: "1h" }); // Use uma chave secreta segura
 
-        res.status(200).json({ token });
+        // Retorna o token e o papel do usuário
+        res.status(200).json({ token, role: user.role });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

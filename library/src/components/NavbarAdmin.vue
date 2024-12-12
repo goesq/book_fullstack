@@ -1,30 +1,32 @@
 <template>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <header v-if="isAdmin"> <!-- Exibe o cabeçalho apenas se o usuário for admin -->
-        <div class="header-container">
-            <div class="titlebook">
-                <router-link to="/home" class="home-link">
-                    <h1>bookcase.com</h1>
-                </router-link>
-            </div>
-            <div class="top">
-                <form action="#" class="search-form">
-                    <input type="text" id="search-input" class="search-input" placeholder="Buscar...">
-                </form>
-                <div class="auth-buttons"> 
-                    <router-link to="/gerenciamento" class="login">
-                        <i class="fa-solid fa-book"></i> +
+    <div> <!-- Elemento raiz adicionado aqui -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <header v-if="isAdmin"> <!-- Exibe o cabeçalho apenas se o usuário for admin -->
+            <div class="header-container">
+                <div class="titlebook">
+                    <router-link to="/home" class="home-link">
+                        <h1>bookcase.com</h1>
                     </router-link>
-                    <router-link to="/editar-perfil" class="login">
-                        <i class="fa-solid fa-user"></i>
-                    </router-link>
-                    <button @click="handleLogout" class="login">
-                        <i class="fa-solid fa-sign-out-alt"></i>
-                    </button>   
+                </div>
+                <div class="top">
+                    <form action="#" class="search-form">
+                        <input type="text" id="search-input" class="search-input" placeholder="Buscar...">
+                    </form>
+                    <div class="auth-buttons"> 
+                        <router-link to="/gerenciamento" class="login">
+                            <i class="fa-solid fa-book"></i> +
+                        </router-link>
+                        <router-link to="/editar-perfil" class="login">
+                            <i class="fa-solid fa-user"></i>
+                        </router-link>
+                        <button @click="handleLogout" class="login">
+                            <i class="fa-solid fa-sign-out-alt"></i>
+                        </button>   
+                    </div>
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
+    </div> <!-- Fim do elemento raiz -->
 </template>
 
 <script>
@@ -34,7 +36,7 @@ export default {
     name: 'NavbarAdmin',
     data() {
         return {
-            isAdmin: false, // Inicializa a variável isAdmin
+            isAdmin: true, // Inicializa a variável isAdmin
         };
     },
     created() {
