@@ -40,6 +40,7 @@
 
 <script>
 import axios from 'axios';
+import { mapMutations } from 'vuex'; // Para mapear as mutations do Vuex
 
 export default {
     data() {
@@ -52,6 +53,8 @@ export default {
         };
     },
     methods: {
+        ...mapMutations(['setUser']), // Mapeia a mutation para atualizar o usuário no Vuex
+        
         async login() {
             this.loading = true; // Inicia o carregamento
             try {
@@ -65,18 +68,40 @@ export default {
                     this.successMessage = "Login realizado com sucesso! Redirecionando...";
                     this.errorMessage = ""; // Limpa a mensagem de erro
 
+                    // Armazena o token e o role no localStorage
+                    localStorage.setItem('token', response.data.token);
+                    localStorage.setItem('role', response.data.role); // Armazena o papel do usuário
+
                     // Limpa os campos após o login
                     this.username = "";
                     this.password = "";
 
+                    // Atualiza o Vuex com os dados do usuário (para persistência)
+                    this.setUser({
+                        username: this.username,
+                        role: response.data.role,
+                        token: response.data.token
+                    });
+
                     setTimeout(() => {
-                        console.log("Redirecionando para /home"); // Verifique se esta linha é executada
-                        this.$router.push('/home');
+                        // Verifica o papel do usuário e redireciona adequadamente
+                        if (response.data.role === 'admin') {
+                            // Redireciona para a página de gerenciamento se for admin
+                            this.$router.push('/gerenciamento');
+                        } else {
+                            // Redireciona para a página principal se for um usuário normal
+                            this.$router.push('/home');
+                        }
                     }, 2000);
                 }
             } catch (error) {
                 // Em caso de erro, exibe uma mensagem amigável
-                this.errorMessage = "Usuário ou senha incorretos. Tente novamente!";
+                if (error.response) {
+                    // Verifica o erro com base na resposta do servidor
+                    this.errorMessage = error.response.data.message || "Erro desconhecido. Tente novamente!";
+                } else {
+                    this.errorMessage = "Erro de rede. Verifique sua conexão.";
+                }
                 this.successMessage = ""; // Limpa a mensagem de sucesso
             } finally {
                 this.loading = false; // Finaliza o carregamento
@@ -86,7 +111,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .success {
     color: green;
     font-weight: bold;

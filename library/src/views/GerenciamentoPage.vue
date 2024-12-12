@@ -69,143 +69,79 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      books: [],
-      searchQuery: '',
-      isFormVisible: false,
-      isEditMode: false,
-      bookForm: {
+      books: [],  // Armazena a lista de livros
+      isFormVisible: false,  // Controle de visibilidade do formulário
+      isEditMode: false,  // Controle se o formulário está em modo de edição
+      bookForm: {          // Formulário de livro com campos para título, autor, ano e imagem
         title: '',
         author: '',
         year: '',
         image: ''
       },
-      selectedBookId: null
+      selectedBookId: null  // ID do livro selecionado para edição
     };
   },
   methods: {
+    // Método para buscar todos os livros
     async fetchBooks() {
       try {
-        const response = await axios.get('http://localhost:5000/api/books', {
-          params: { search: this.searchQuery }
-        });
-        this.books = response.data;
+        const response = await axios.get('http://localhost:5000/api/books');
+        this.books = response.data;  // Armazena os livros no estado
       } catch (error) {
         console.error('Erro ao buscar livros:', error);
       }
     },
 
-    async searchBooks() {
-      this.fetchBooks();
-    },
-
+    // Método para criar um novo livro
     async createNewBook() {
-      this.isFormVisible = true;
-      this.isEditMode = false;
-      this.bookForm = { title: '', author: '', year: '', image: '' };
+      this.isFormVisible = true;  // Exibe o formulário
+      this.isEditMode = false;    // Define o modo como criação
+      this.bookForm = { title: '', author: '', year: '', image: '' };  // Limpa os campos do formulário
     },
 
+    // Método para editar um livro
     async editBook(book) {
-      this.isFormVisible = true;
-      this.isEditMode = true;
-      this.bookForm = { ...book };
-      this.selectedBookId = book._id;
+      this.isFormVisible = true;  // Exibe o formulário
+      this.isEditMode = true;     // Define o modo como edição
+      this.bookForm = { ...book };  // Preenche o formulário com os dados do livro
+      this.selectedBookId = book._id;  // Armazena o ID do livro para futuras edições
     },
 
+    // Método para salvar um livro (criar ou editar)
     async saveBook() {
       try {
         if (this.isEditMode) {
+          // Se estiver no modo de edição, faz uma requisição PUT
           await axios.put(`http://localhost:5000/api/books/${this.selectedBookId}`, this.bookForm);
         } else {
+          // Caso contrário, faz uma requisição POST para criar um novo livro
           await axios.post('http://localhost:5000/api/books', this.bookForm);
         }
-        this.isFormVisible = false;
-        this.fetchBooks();
+        this.isFormVisible = false;  // Esconde o formulário após salvar
+        this.fetchBooks();           // Atualiza a lista de livros
       } catch (error) {
         console.error('Erro ao salvar livro:', error);
       }
     },
 
+    // Método para excluir um livro
     async deleteBook(bookId) {
       try {
         await axios.delete(`http://localhost:5000/api/books/${bookId}`);
-        this.fetchBooks();
+        this.fetchBooks();  // Atualiza a lista de livros após a exclusão
       } catch (error) {
         console.error('Erro ao excluir livro:', error);
       }
     },
 
+    // Método para cancelar a edição
     cancelEdit() {
-      this.isFormVisible = false;
+      this.isFormVisible = false;  // Esconde o formulário
     }
   },
   mounted() {
-    this.fetchBooks();
+    this.fetchBooks();  // Carrega os livros ao montar o componente
   }
 };
 </script>
 
-<style scoped>
-/* Seu estilo aqui */
-.book-image {
-  max-width: 100px;
-  max-height: 100px;
-  object-fit: cover;
-}
-
-.crud-container {
-  margin: 20px;
-}
-
-.crud-title {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-}
-
-.crud-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.crud-table th, .crud-table td {
-  padding: 10px;
-  border: 1px solid #ddd;
-  text-align: left;
-}
-
-.form-container {
-  margin-top: 20px;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-title {
-  font-size: 1.2em;
-  margin-bottom: 10px;
-}
-
-.login-btn, .cancel-btn {
-  padding: 10px 15px;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-.cancel-btn {
-  background-color: #f44336; /* Cor vermelha para o botão cancelar */
-  color: white;
-}
-
-.cancel-btn:hover {
-  background-color: #d32f2f; /* Cor mais escura ao passar o mouse */
-}
-
-.login-btn {
-  background-color: #4CAF50; /* Cor verde para o botão salvar */
-  color: white;
-}
-
-.login-btn:hover {
-  background-color: #45a049; /* Cor mais escura ao passar o mouse */
-}
-</style>

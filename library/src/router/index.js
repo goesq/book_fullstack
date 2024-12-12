@@ -3,6 +3,7 @@ import HomePage from '../views/HomePage.vue';
 import LoginPage from '../views/LoginPage.vue';
 import CadastroPage from '../views/CadastroPage.vue';
 import GerenciamentoPage from '../views/GerenciamentoPage.vue';
+import EditarPage from '../views/EditProfile.vue';
 import store from '../store'; // Importa o store do Vuex
 
 const routes = [
@@ -25,8 +26,14 @@ const routes = [
     path: '/gerenciamento',
     name: 'gerenciamento',
     component: GerenciamentoPage,
-    meta: { requiresAuth: true }, // Protege a rota de gerenciamento
+    meta: { requiresAuth: true, requiresAdmin: true }, // Requer autenticação e ser admin
   },
+  {
+    path: '/editar-perfil',
+    name: 'editarperfil',
+    component: EditarPage,
+    meta: { requiresAuth: true }, // Apenas requer autenticação
+  }
 ];
 
 const router = createRouter({
@@ -34,17 +41,28 @@ const router = createRouter({
   routes,
 });
 
-// Middleware para verificar autenticação
+// Middleware para verificação de autenticação e role
 router.beforeEach((to, from, next) => {
   const isAuthenticated = store.getters.isAuthenticated; // Verifica se o usuário está autenticado
+  const isAdmin = store.getters.isAdmin; // Verifica se o usuário é admin
+
+  // Log de depuração para verificar se os dados do Vuex estão corretos
+  console.log('isAuthenticated:', isAuthenticated); // Verifique se o usuário está autenticado
+  console.log('isAdmin:', isAdmin); // Verifique se o usuário tem a role de admin
 
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (!isAuthenticated) {
+      console.log('Usuário não autenticado. Redirecionando para login.');
       next({ name: 'login' }); // Redireciona para a página de login se não estiver autenticado
+    } else if (to.matched.some(record => record.meta.requiresAdmin) && !isAdmin) {
+      console.log('Usuário não tem permissão de admin. Redirecionando para home.');
+      next({ name: 'home' }); // Redireciona para a página inicial se o usuário não for admin
     } else {
-      next(); // Permite o acesso à rota
+      console.log('Acesso permitido.');
+      next(); // Permite o acesso à rota se estiver autenticado e for admin quando necessário
     }
   } else {
+    console.log('Rota pública, acesso permitido.');
     next(); // Permite o acesso a rotas públicas
   }
 });
