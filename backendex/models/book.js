@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 
-const BookSchema = new mongoose.Schema({
-  title: String,
-  author: String,
-  year: Number,
-  image: String,  // Campo para armazenar URL da imagem
-  isbn: String
+const bookSchema = new mongoose.Schema({
+    title: { type: String, required: true },
+    author: { type: String, required: true },
+    year: { type: Number, required: true },
+    image: { type: String, required: false }, // O campo de imagem é opcional
 });
 
-module.exports = mongoose.model('Book', BookSchema);
+const Book = mongoose.model('Book', bookSchema);
+
+module.exports = Book;

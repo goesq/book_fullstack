@@ -50,16 +50,20 @@ router.beforeEach((to, from, next) => {
   console.log('isAuthenticated:', isAuthenticated); // Verifique se o usuário está autenticado
   console.log('isAdmin:', isAdmin); // Verifique se o usuário tem a role de admin
 
+  // Verifica se a rota exige autenticação
   if (to.matched.some(record => record.meta.requiresAuth)) {
+    // Se não estiver autenticado, redireciona para login
     if (!isAuthenticated) {
       console.log('Usuário não autenticado. Redirecionando para login.');
-      next({ name: 'login' }); // Redireciona para a página de login se não estiver autenticado
-    } else if (to.matched.some(record => record.meta.requiresAdmin) && !isAdmin) {
+      next({ name: 'login' }); // Redireciona para a página de login
+    } 
+    // Se a rota exigir admin e o usuário não for admin, redireciona para a home
+    else if (to.matched.some(record => record.meta.requiresAdmin) && !isAdmin) {
       console.log('Usuário não tem permissão de admin. Redirecionando para home.');
-      next({ name: 'home' }); // Redireciona para a página inicial se o usuário não for admin
+      next({ name: 'home' }); // Redireciona para a página inicial
     } else {
       console.log('Acesso permitido.');
-      next(); // Permite o acesso à rota se estiver autenticado e for admin quando necessário
+      next(); // Permite o acesso à rota
     }
   } else {
     console.log('Rota pública, acesso permitido.');

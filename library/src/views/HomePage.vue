@@ -1,5 +1,5 @@
 <template>
-    <div> <!-- Elemento raiz adicionado aqui -->
+    <div>
         <header>
             <h1 class="highlight-title">ESTANTE<br> ONLINE</h1>
         </header>
@@ -18,15 +18,17 @@
                 </article>
             </section>
         </main>
-    </div> <!-- Fim do elemento raiz -->
+    </div>
 </template>
 
 <script>
+import api from '../axios';  // Importa o arquivo axios.js (ajuste o caminho conforme necessário)
+
 export default {
-    data() {
-        return {
-            books: [
-                {
+  data() {
+    return {
+      books: [
+      {
                     title: "Elon Musk",
                     author: "Isaacson, Walter",
                     image: "../src/assets/img/elon.png"
@@ -71,11 +73,26 @@ export default {
                     author: "Queiroz, Rachel de",
                     image: "../src/assets/img/meninomagico.png"
                 }
-            ]
-        };
+      ]  
+    };
+  },
+  mounted() {
+    this.fetchBooks();  // Chama o método para carregar os livros quando o componente for montado
+  },
+  methods: {
+    async fetchBooks() {
+      try {
+        // Faz a requisição GET usando a instância configurada no axios.js
+        const response = await api.get('/books');
+        this.books = response.data;  // Armazena os livros na variável 'books'
+      } catch (error) {
+        console.error('Erro ao carregar os livros:', error);
+      }
     }
+  }
 };
 </script>
+
 
 <style scoped>
 .book-highlight {
