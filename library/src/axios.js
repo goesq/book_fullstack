@@ -1,32 +1,37 @@
-import api from 'axios'; // Certifique-se de que o axios esteja instalado e importado corretamente
+import axios from 'axios';
 
-export default {
-    data() {
-        return {
-            username: '',
-            password: '',
-            errorMessage: '',
-        };
-    },
-    methods: {
-        async login() {
-            try {
-                const response = await api.post('http://localhost:3000/api/auth/login', { // Ajuste a URL conforme necessário
-                    username: this.username,
-                    password: this.password,
-                });
+// Cria uma instância do axios com uma URL base
+const api = axios.create({
+  baseURL: 'http://localhost:3000/api/',  // A URL base da API (ajuste conforme necessário)
+  timeout: 10000,  // Tempo limite para a requisição
+});
 
-                // Verifica se a resposta contém sucesso e token
-                if (response.data && response.data.success) {
-                    localStorage.setItem('token', response.data.token); // Salvar o token no localStorage
-                    this.$router.push('/home'); // Redireciona para a página "ativos" (ajuste a rota se necessário)
-                } else {
-                    this.errorMessage = 'Login falhou. Verifique suas credenciais.';
-                }
-            } catch (error) {
-                this.errorMessage = 'Erro no login. Tente novamente.';
-                console.error('Erro no login:', error.response ? error.response.data : error.message);
-            }
-        },
-    },
-};
+// Adiciona o cabeçalho de autenticação (se o token estiver disponível no localStorage)
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`;  // Adiciona o token ao cabeçalho da requisição
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+// Intercepta respostas para tratar erros globalmente
+api.interceptors.response.use(
+  (response) => response,  // Se a resposta for bem-sucedida, apenas retorna
+  (error) => {
+    // Trata erros globais (como resposta 401 de autenticação, etc.)
+    if (error.response && error.response.status === 401) {
+      // Se não estiver autenticado, talvez seja interessante redirecionar para a página de login
+      console.error('Token inválido ou expirado. Redirecionando para login...');
+      // Aqui, você pode redirecionar para a página de login (se estiver usando Vue Router, por exemplo)
+    }
+    return Promise.reject(error);  // Retorna o erro para o componente que fez a requisição
+  }
+);
+
+export default api;  // Exporta a instância do axios configurada
