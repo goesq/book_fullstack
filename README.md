@@ -1,4 +1,4 @@
-# Bookcase.com | 📚
+# bookcase.com | 📚
 
 **Bookcase.com** é uma aplicação web que funciona como uma biblioteca digital, permitindo a gestão de livros e usuários através de um sistema CRUD (Criar, Ler, Atualizar e Deletar). O projeto utiliza Vue.js (Vue/Vite) no frontend e Node.js com Express no backend, com integração ao MongoDB para armazenamento de dados.
 
