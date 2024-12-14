@@ -52,7 +52,7 @@
  ```bash
    cd backendex
    npm install
-
-```bash
-cd backend
+```
+ ```bash
+cd library
 npm install
