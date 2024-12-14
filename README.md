@@ -49,4 +49,10 @@
    ```bash
    git clone https://github.com/seu-usuario/bookcase.com.git
    cd bookcase.com 
+ ```bash
+   cd backendex
+   npm install
+
 ```bash
+cd backend
+npm install
