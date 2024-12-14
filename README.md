@@ -46,9 +46,10 @@
 ### Passos para Rodar Localmente
 
 1. Clone o repositório:
-   ```bash
+```bash
    git clone https://github.com/seu-usuario/bookcase.com.git
    cd bookcase.com 
+```
  ```bash
    cd backendex
    npm install
