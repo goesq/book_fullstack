@@ -1,6 +1,6 @@
-# Bookcase.com
+# Bookcase.com | 📚
 
-**Bookcase.com** é uma aplicação web que funciona como uma biblioteca digital, permitindo a gestão de livros e usuários através de um sistema CRUD (Criar, Ler, Atualizar e Deletar). O projeto utiliza Vue.js no frontend e Node.js com Express no backend, com integração ao MongoDB para armazenamento de dados.
+**Bookcase.com** é uma aplicação web que funciona como uma biblioteca digital, permitindo a gestão de livros e usuários através de um sistema CRUD (Criar, Ler, Atualizar e Deletar). O projeto utiliza Vue.js (Vue/Vite) no frontend e Node.js com Express no backend, com integração ao MongoDB para armazenamento de dados.
 
 ## Tecnologias Utilizadas
 
@@ -50,10 +50,43 @@
    git clone https://github.com/seu-usuario/bookcase.com.git
    cd bookcase.com 
 ```
+
+2. Instale as dependências do backend:
  ```bash
    cd backendex
    npm install
 ```
+
+3. Instale as dependências do frontend:
  ```bash
 cd library
 npm install
+```
+
+4. Configure as variáveis de ambiente:
+   - Crie um arquivo `.env` na pasta `backend` com as variáveis necessárias. Exemplo de variáveis de ambiente:
+
+```bash
+MONGO_URI=mongodb://localhost:27017/bookcase
+JWT_SECRET=seu-segredo
+PORT=5000
+```
+
+5. Inicie o servidor backend:
+```bash
+cd backend
+npm start
+```
+
+6. Inicie o servidor frontend:
+```bash
+cd frontend
+npm run dev
+```
+7. Seguir link do terminal, e ser feliz :D
+
+
+ 
+
+
+
