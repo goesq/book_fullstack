@@ -86,6 +86,14 @@ npm run dev
 7. Seguir link do terminal, e ser feliz :D
 
 
+![login](https://github.com/user-attachments/assets/5a80979e-9f20-4461-a3b1-82883091eb2b)
+
+![cadastro](https://github.com/user-attachments/assets/a1f532a1-afa7-44ce-b20f-f8b86882a228)
+
+![estante](https://github.com/user-attachments/assets/6d3a1250-d76a-43aa-9f28-171e484fd3d7)
+
+
+
  
 
 
